@@ -1,0 +1,190 @@
+:root{
+  --bg: #0b0b0b;
+  --card: #0f1112;
+  --gold: #D4AF37;
+  --muted: #b4b5b7;
+  --text: #f5efe6;
+  --accent: #d9c08b;
+  --radius: 12px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* header */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(212,175,55,0.06), transparent);
+}
+.brand{
+  font-weight:800;
+  color:var(--gold);
+  font-size:1.25rem;
+  letter-spacing:1px;
+}
+.site-header nav a{
+  color:var(--text);
+  text-decoration:none;
+  margin-left:14px;
+  font-weight:600;
+}
+
+/* remove link color/underline for restaurant links (user requested) */
+a, a:visited {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* page layout */
+.page{
+  padding:20px;
+  max-width:1200px;
+  margin: 18px auto;
+}
+
+/* search */
+.searchbar{
+  display:block;
+  width:100%;
+  max-width:720px;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:#0d0d0d;
+  color:var(--text);
+  margin-bottom:20px;
+  outline:none;
+}
+
+/* grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:18px;
+}
+
+/* card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  border: 2px solid rgba(212,175,55,0.28);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.55) inset;
+  display:flex;
+  flex-direction:column;
+  transition: transform .12s ease, box-shadow .12s ease;
+  text-decoration:none;
+  color:inherit;
+}
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 0 4px rgba(212,175,55,0.06);
+}
+
+/* image */
+.card-img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  display:block;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* body */
+.card-body{
+  padding:12px 14px;
+}
+.card-body h3{ margin:0 0 6px 0; font-size:1.05rem; color:var(--text) }
+.muted{ color:var(--muted); font-size:0.92rem; margin:6px 0; }
+.meta{ margin-top:8px; display:flex; align-items:center; gap:10px; }
+
+/* rating bubble */
+.rating{
+  background: rgba(255,255,255,0.06);
+  padding:6px 8px;
+  border-radius:8px;
+  font-weight:700;
+  color:var(--gold);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* restaurant page */
+.restaurant-page{ padding:20px; max-width:900px; margin:0 auto; }
+
+/* menu grid and card layout */
+.menu-grid{
+  display:grid;
+  gap:18px;
+  margin-top:18px;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+}
+.menu-card{
+  background: #0e0e0e;
+  padding:18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.02);
+  min-height:120px;
+  display:flex;
+  align-items:center;
+}
+
+/* menu-card img (left) */
+.menu-card img.card-img{
+  width:160px;
+  height:100px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+/* nicer controls spacing and round buttons */
+.menu-actions{ display:flex; justify-content:space-between; align-items:center; margin-top:12px; }
+button{
+  background:var(--gold);
+  color:#080808;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+button.secondary{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text) }
+
+/* small square increment buttons */
+.menu-card button{
+  padding:8px 10px;
+  border-radius:8px;
+}
+.menu-card .qty-controls button{
+  width:36px;
+  height:36px;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* inputs */
+input{ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:#0b0b0b;color:var(--text);width:100%;margin:6px 0 }
+
+/* remove blue / underline on visited anchor specifically inside cards */
+.card a, .menu-card a { color: inherit !important; text-decoration: none !important; }
+
+/* responsive */
+@media (max-width:900px){
+  .menu-grid{ grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); }
+  .menu-card img.card-img{ width:120px; height:90px; }
+}
+@media (max-width:600px){
+  .card-img{ height:140px; }
+  .page{ padding:12px; }
+}

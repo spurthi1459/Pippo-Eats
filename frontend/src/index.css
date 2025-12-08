@@ -1,0 +1,492 @@
+﻿/* Global vars */
+:root {
+  --bg: #0b0b0b;
+  --panel: #0f0f0f;
+  --muted: #bdbdbd;
+  --gold: #d7b53a;
+  --card-border: rgba(215, 181, 58, 0.12);
+  --text: #ffffff;
+  --radius: 10px;
+  --gap: 18px;
+  --max-width: 1280px;
+}
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.site-header {
+  width: 100%;
+  background: linear-gradient(#0b0b0b, #0b0b0b);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* brand left, cart right */
+  padding: 14px 24px;
+}
+
+/* Brand left, golden */
+.brand {
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--gold);
+  font-size: 22px;
+  text-decoration: none;
+}
+
+/* Right nav (cart) */
+.nav-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(215,181,58,0.15);
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(255,255,255,0.01);
+}
+.cart-badge {
+  min-width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0 6px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* App main - push content below header */
+.app-main {
+  max-width: var(--max-width);
+  margin: 20px auto;
+  padding: 0 24px 60px 24px;
+}
+
+/* Searchbar (if using .searchbar) */
+.searchbar {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  color: inherit;
+  outline: none;
+  font-size: 15px;
+}
+
+/* GRID: 4 columns (desktop), responsive */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  margin-top: 20px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+/* Card styling (restaurant cards use .card) */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+  border-radius: var(--radius);
+  padding: 12px;
+  border: 2px solid transparent;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+  box-shadow: 0 4px 0 rgba(255,255,255,0.01);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* golden border around cards */
+.card {
+  border-color: rgba(215,181,58,0.18); /* subtle golden border */
+}
+
+/* Card hover accent */
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+  border-color: var(--gold);
+}
+
+/* Card media */
+.card-media {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 200px;
+  background: rgba(255,255,255,0.02);
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body */
+.card-body h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+.card-body p.meta {
+  margin: 6px 0 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Restaurant rating */
+.rating {
+  margin-top: 8px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Menu item card styling (for restaurant page items if you used inline cards) */
+.menu-item {
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  border: 2px solid rgba(215,181,58,0.08);
+}
+.menu-item img {
+  width: 150px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.menu-item h3 { margin: 0 0 6px 0; }
+.menu-item p { margin: 0 0 12px 0; color: var(--muted); }
+
+/* small buttons (add/remove) used across pages */
+.btn {
+  background: var(--gold) !important;
+  color: white;
+  border: gold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+/* small circular inc/dec buttons (original) */
+.inc-dec {    
+  display: inline-flex;   
+  align-items: center;
+  gap: 8px;
+}
+.inc-dec button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  /* fixed border syntax and improved visibility */
+  border: 1px solid rgba(241, 191, 13, 0.91) !important; 
+  background: transparent;
+  color: var(--gold) !important; 
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* helper spacing */
+.page { padding-top: 8px; }
+
+/* ===========================
+   CART / ITEM CONTROLS STYLES
+   =========================== */
+
+/* each cart item row (box) */
+/* ===== Make cart buttons strongly visible ===== */
+.cart-btn,
+.cart-remove {
+  border: 2px solid var(--gold) !important;           /* thicker gold border */
+  background: rgba(241, 191, 13, 0.91) !important;       /* stronger gold tint */
+  color: #000 !important;                             /* black text on gold bg for contrast */
+  padding: 8px 12px !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 18px rgba(215,181,58,0.06) !important;
+  outline: none !important;
+}
+
+/* Make the minus/plus square and centered */
+.cart-btn {
+  width: 40px !important;
+  padding: 0 !important;
+  font-size: 18px !important;
+  background: rgba(0,0,0,0.15) !important; /* subtle dark base so border + gold tint are visible */
+  color: var(--gold) !important; /* show symbol in gold */
+}
+
+/* Numeric quantity - make it visible and aligned */
+.cart-qty {
+  min-width: 36px !important;
+  padding: 6px 8px !important;
+  text-align: center !important;
+  background: rgba(255,255,255,0.02) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255,255,255,0.03) !important;
+}
+
+/* Remove button style */
+.cart-remove {
+  background: transparent !important; /* keep remove subtle but visible */
+  color: #fff !important;
+}
+
+/* Hover states -> gold fill for clear affordance */
+.cart-btn:hover {
+  background: var(--gold) !important;
+  color: #000 !important;
+  transform: translateY(-1px);
+}
+
+.cart-remove:hover {
+  background: var(--gold) !important;
+  color: #000 !important;
+  transform: translateY(-1px);
+}
+
+/* Make sure buttons don't get overridden on small screens */
+@media (max-width: 700px) {
+  .cart-btn, .cart-remove { height: 36px !important; min-width: 34px !important; padding: 6px 8px !important; }
+  .cart-qty { min-width: 30px !important; padding: 5px 6px !important; }
+}
+
+/* Remove focus outline but keep accessible focus ring */
+.cart-btn:focus,
+.cart-remove:focus {
+  box-shadow: 0 0 0 3px rgba(215,181,58,0.18);
+}
+
+/* === Make Cart controls match the Menu controls (gold, visible, aligned) === */
+
+.cart-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end; /* keep controls to the right */
+  min-width: 220px;          /* reserve space so title/price don't wrap into controls */
+}
+
+/* plus/minus buttons (square) */
+.cart-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background 120ms ease, transform 100ms ease;
+}
+
+/* quantity box */
+.cart-qty {
+  min-width: 36px;
+  padding: 6px 8px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Remove button (small pill) */
+.cart-remove {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 120ms ease, transform 100ms ease;
+}
+
+/* Hover / active styles */
+.cart-btn:hover,
+.cart-remove:hover {
+  background: var(--gold);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+/* Focus ring for keyboard users */
+.cart-btn:focus,
+.cart-remove:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(215,181,58,0.12);
+}
+
+/* Ensure cart controls wrap nicely on narrow screens */
+@media (max-width: 700px) {
+  .cart-controls {
+    min-width: 0;
+    gap: 8px;
+  }
+  .cart-btn { width: 34px; height: 34px; font-size: 16px; }
+  .cart-qty { min-width: 28px; padding: 5px 6px; }
+  .cart-remove { padding: 6px 8px; font-size: 14px; }
+}
+
+/* =========================
+   CART VISIBILITY OVERRIDE
+   (Add this at the VERY END of index.css — non-destructive)
+   ========================= */
+
+/* stronger specificity so we don't break other pages */
+body .cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+body .cart-item-left {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ensure controls sit to the right and don't overlap text */
+body .cart-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  min-width: 200px;
+}
+
+/* visible, high-contrast +/- square buttons */
+body .cart-controls .cart-btn,
+body .cart-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid var(--gold);
+  background: rgba(0,0,0,0.18);   /* subtle dark base so gold border is visible */
+  color: var(--gold) !important;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 120ms ease, transform 100ms ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* quantity box — visible background + white number */
+body .cart-qty {
+  min-width: 36px;
+  padding: 6px 8px;
+  text-align: center;
+  background: rgba(255,255,255,0.03);
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* remove button pill — visible border and contrast */
+body .cart-remove {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--gold);
+  background: rgba(0,0,0,0.12);
+  color: var(--gold) !important;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 120ms ease, transform 100ms ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.30);
+}
+
+/* hover gives clear gold fill */
+body .cart-btn:hover, 
+body .cart-remove:hover {
+  background: var(--gold) !important;
+  color: #000 !important;
+  transform: translateY(-1px);
+}
+
+/* accessible focus */
+body .cart-btn:focus,
+body .cart-remove:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(215,181,58,0.12) !important;
+}
+
+/* small screens: stack controls under text so nothing overlaps */
+@media (max-width: 700px) {
+  body .cart-item-row { flex-direction: column; align-items: stretch; }
+  body .cart-controls { justify-content: flex-start; min-width: 0; margin-top: 8px; }
+  body .cart-controls .cart-btn { width: 36px; height: 36px; font-size: 16px; }
+  body .cart-qty { min-width: 28px; padding: 5px 6px; }
+  body .cart-remove { padding: 6px 8px; font-size: 14px; }
+}
+
+
+
