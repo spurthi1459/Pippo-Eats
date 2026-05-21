@@ -86,7 +86,6 @@ Backend
 
 
 Pippo-Eats/
-│
 ├── backend/
 │   ├── src/
 │   │   ├── models/
@@ -108,33 +107,35 @@ Pippo-Eats/
 │   │
 │   └── package.json
 │
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Header.tsx
-    │   │   ├── RestaurantCard.tsx
-    │   │   └── SearchBar.tsx
-    │   │
-    │   ├── pages/
-    │   │   ├── CartPage.tsx
-    │   │   ├── Home.tsx
-    │   │   └── RestaurantPage.tsx
-    │   │
-    │   ├── context/
-    │   │   ├── AuthContext.tsx
-    │   │   └── CartContext.tsx
-    │   │
-    │   ├── services/
-    │   │   └── api.ts
-    │   │
-    │   ├── App.tsx
-    │   ├── main.tsx
-    │   ├── index.css
-    │   ├── styles.css
-    │   ├── types.ts
-    │   └── index.html
-    │
-    └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Header.tsx
+│   │   │   ├── RestaurantCard.tsx
+│   │   │   └── SearchBar.tsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── CartPage.tsx
+│   │   │   ├── Home.tsx
+│   │   │   └── RestaurantPage.tsx
+│   │   │
+│   │   ├── context/
+│   │   │   ├── AuthContext.tsx
+│   │   │   └── CartContext.tsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── api.ts
+│   │   │
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   ├── index.css
+│   │   ├── styles.css
+│   │   ├── types.ts
+│   │   └── index.html
+│   │
+│   └── package.json
+│
+└── README.md
 
 
 ---
