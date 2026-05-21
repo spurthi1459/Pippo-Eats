@@ -85,6 +85,9 @@ Backend
 
 
 
+## Project Structure
+
+```bash
 Pippo-Eats/
 ├── backend/
 │   ├── src/
@@ -136,6 +139,7 @@ Pippo-Eats/
 │   └── package.json
 │
 └── README.md
+```
 
 
 ---
